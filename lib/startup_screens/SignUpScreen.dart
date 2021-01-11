@@ -7,36 +7,51 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:async/async.dart';
 import 'package:linkcord_app/role_screen/LinkRoleScreen.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:linkcord_app/startup_screens/LandingScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
-  SignUpScreen({Key key}) : super(key: key);
+
 
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final GlobalKey<FormState> _signupFormKey = GlobalKey<FormState>();
-  TextEditingController nameInputController;
-  TextEditingController emailInputController;
-  TextEditingController confirmEmailInputController;
-  TextEditingController passwordInputController;
-  TextEditingController confirmPasswordInputController;
+  String name, email, confirmEmail, password, confirmPassword;
+  bool savedAttempted = false;
+  final formKey = GlobalKey<FormState>();
+  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  User currentFireBaseUser = FirebaseAuth.instance.currentUser;
- // String currentFireBaseUserID = FirebaseAuth.instance.currentUser.uid;
-  //String currentFireBaseUserName = FirebaseAuth.instance.currentUser.displayName;
-  //String currentFireBaseUserEmail = FirebaseAuth.instance.currentUser.email;
+  
+  void _createUser({String n, String em, String pw}){
+    _firebaseAuth.createUserWithEmailAndPassword(email: em, password: pw)
+        .then((currentLinkUser) => FirebaseFirestore.instance.collection("users")
+        .doc(currentLinkUser.user.uid).set({"uid": currentLinkUser.user.uid, "name": name, "email (.edu)": em}))
+        .then((authResult) => {
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LinkRoleScreen()))
+        })
+        .catchError((err){print(err.code);
+    if (err.code == "email-already-in-use") {
+      showCupertinoDialog(context: context, builder: (context){
+        return AlertDialog(
+          title: Text("This email already has an account assosicated with it"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: (){
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      });
+    }
 
-  @override
-  void initState() {
-    nameInputController = new TextEditingController();
-    emailInputController = new TextEditingController();
-    confirmEmailInputController = new TextEditingController();
-    passwordInputController = new TextEditingController();
-    confirmEmailInputController = new TextEditingController();
-    super.initState();
+    });
   }
+
+
 
   String emailValidator(String value) {
     Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|'
@@ -95,8 +110,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
 
 
+        // Design - Top Right
+        Container (
+          child: Align (
+            alignment: Alignment(1,-1),
+
+            child: ClipPath(
+              clipper: OvalLeftBorderClipper(),
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.height * 0.1,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+
+
+        // Design - Bottom left
+        Container (
+          child: Align (
+            alignment: Alignment(-1,1),
+            child: ClipPath(
+              clipper: OvalRightBorderClipper(),
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.height * 0.20,
+                color: Colors.white,
+                child: Align(
+                  alignment: Alignment(-0.25,0),
+                  child: Text(
+                    "LINKCORD",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.roboto(
+                        textStyle: TextStyle(
+                          color: Color(0xFF39556D),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        )
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+
+
+
         Form(
-          key: _signupFormKey,
+          key: formKey,
           child: Stack(children: <Widget>[
             Align(
               alignment: Alignment(0,-0.2),
@@ -126,11 +189,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.text,
                   obscureText: false,
 
-                  controller: nameInputController,
-
-                  validator: (value) {
-                    if (value.length < 2) {
-                      return "Please enter a valid name";
+                  onChanged: (textValue) {
+                    setState(() {
+                      name = textValue;
+                    });
+                  },
+                  validator: (nameValue) {
+                    if (nameValue.isEmpty) {
+                      return "Required";
                     } else {
                       return null;
                     }
@@ -170,7 +236,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.emailAddress,
                   obscureText: false,
 
-                  controller: emailInputController,
+                  onChanged: (textValue) {
+                    setState(() {
+                      email = textValue;
+                    });
+                  },
+
                   validator: emailValidator,
 
 
@@ -207,8 +278,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.text,
                   obscureText: false,
 
-                  controller: confirmEmailInputController,
-                  validator: emailValidator,
+                  onChanged: (textValue) {
+                    setState(() {
+                      confirmEmail = textValue;
+                    });
+                  },
+
+                  validator: (emailConfValue){
+                    if(emailConfValue != email) {
+                      return "Education Emails must match";
+                    }
+                    return null;
+                  },
 
 
 
@@ -244,7 +325,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   keyboardType: TextInputType.text,
                   obscureText: true,
-                  controller: passwordInputController,
+
+                  onChanged: (textValue) {
+                    setState(() {
+                      password = textValue;
+                    });
+                  },
                   validator: passwordValidator,
 
                 ),
@@ -280,63 +366,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.text,
                   obscureText: true,
 
-                  controller: confirmPasswordInputController,
-                  validator: passwordValidator,
+                  onChanged: (textValue) {
+                    setState(() {
+                      confirmPassword = textValue;
+                    });
+                  },
+
+                  validator: (pwdConfVal){
+                    if (pwdConfVal != password){
+                      return "Passwords must match";
+                    }
+                    return null;
+                  },
 
                 ),
               ),
             ),
 
 
-
             Align(
-              alignment: Alignment(0,0.7),
+              alignment: Alignment(0,0.6),
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 30),
                 width: MediaQuery.of(context).size.width * 0.15,
                 child: RaisedButton(
                   elevation: 5,
-                  onPressed: (){print("SIGN");
-                    if (_signupFormKey.currentState.validate()) {
-                      if ((emailInputController.text == confirmEmailInputController.text)
-                      & (passwordInputController.text == confirmPasswordInputController.text)) {
-                        FirebaseAuth.instance.createUserWithEmailAndPassword(
-                            email: emailInputController.text, password: passwordInputController.text)
-                            .then((currentFireBaseUser) => FirebaseFirestore.instance.collection("users")
-                            .doc(currentFireBaseUser.user.uid)
-                            .set({"uid":currentFireBaseUser.user.uid, "display name": nameInputController.text,
-                          "email (.edu)": emailInputController.text})
-                            .then((result) => {Navigator.pushAndRemoveUntil(context,
-                            MaterialPageRoute(builder: (context) => LinkRoleScreen()), (_) => false),
-                          nameInputController.clear(),
-                          emailInputController.clear(),
-                          confirmEmailInputController.clear(),
-                          passwordInputController.clear(),
-                          confirmPasswordInputController.clear()})
-                            .catchError((err) => print(err)))
-                            .catchError((err) => print(err))
-                            .catchError((err){
-                              print(err.code);
-                              if (err.code == "ERROR_EMAIL_ALREADY_IN_USE"){
-                                showCupertinoDialog(context: context, builder: (context) {
-                                  return AlertDialog(
-                                    title: Text("Email in Use"),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text("OK"),
-                                        onPressed: (){
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                  },
-                                );
-                              };
-                              },
-                        );
-                      }
-                    };
+                  onPressed: () {
+                    setState(() {
+                      savedAttempted = true;
+                    });
+                    if(formKey.currentState.validate()){
+                      formKey.currentState.save();
+                      _createUser(em: email, pw: password);
+                    }
                   },
                   padding: EdgeInsets.all(20),
                   shape: RoundedRectangleBorder(
@@ -344,10 +406,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   color: Color(0xFFB5E8FF),
                   child: Text(
-                    "SIGN UP",
+                    "COMPLETE SIGN UP",
                     style: GoogleFonts.roboto(
                       color: Color(0xFF39556D),
-                      letterSpacing: 1.5,
+                      letterSpacing: 1,
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                     ),
@@ -356,10 +418,127 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
 
-
-
           ],),
-        )
+        ),
+
+
+        // Go Back
+        // Sign Up Button
+        Align(
+          alignment: Alignment(0,0.8),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 30),
+            width: MediaQuery.of(context).size.width * 0.15,
+            child: RaisedButton(
+              elevation: 5,
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (_) => LandingScreen()));
+              },
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Color(0xFFFFCCCB),
+              child: Text(
+                "GO BACK",
+                style: GoogleFonts.roboto(
+                  color: Color(0xFF39556D),
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ),
+
+
+        // About
+        Align(
+          alignment: Alignment(0.75,1),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 30),
+            width: MediaQuery.of(context).size.width * 0.06,
+            child: FlatButton(
+              onPressed: () {
+                print('ABOUT');
+              },
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Color(0x00000000),
+              child: Text(
+                "ABOUT US",
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+        ),
+
+
+        // Privacy
+        Align(
+          alignment: Alignment(0.85,1),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 30),
+            width: MediaQuery.of(context).size.width * 0.06,
+            child: FlatButton(
+              onPressed: () {
+                print('PRIVACY');
+              },
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Color(0x00000000),
+              child: Text(
+                "PRIVACY",
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+        ),
+
+
+        // Contact Us
+        Align(
+          alignment: Alignment(0.95,1),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 30),
+            width: MediaQuery.of(context).size.width * 0.06,
+            child: FlatButton(
+              onPressed: () {
+                print('CONTACT US');
+              },
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Color(0x00000000),
+              child: Text(
+                "CONTACT US",
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+        ),
 
 
 
