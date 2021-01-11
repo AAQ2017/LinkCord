@@ -132,7 +132,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     if (value.length < 2) {
                       return "Please enter a valid name";
                     } else {
-                      return "null";
+                      return null;
                     }
                   },
 
@@ -207,7 +207,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.text,
                   obscureText: false,
 
-
+                  controller: confirmEmailInputController,
+                  validator: emailValidator,
 
 
 
@@ -295,7 +296,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 width: MediaQuery.of(context).size.width * 0.15,
                 child: RaisedButton(
                   elevation: 5,
-                  onPressed: (){
+                  onPressed: (){print("SIGN");
                     if (_signupFormKey.currentState.validate()) {
                       if ((emailInputController.text == confirmEmailInputController.text)
                       & (passwordInputController.text == confirmPasswordInputController.text)) {
