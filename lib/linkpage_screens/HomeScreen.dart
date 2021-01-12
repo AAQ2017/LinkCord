@@ -4,12 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
-class LinkRoleScreen extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _LinkRoleScreenState createState() => _LinkRoleScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _LinkRoleScreenState extends State<LinkRoleScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
