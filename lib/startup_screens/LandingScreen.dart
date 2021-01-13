@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:linkcord_app/startup_screens/SignUpScreen.dart';
-
+import 'package:linkcord_app/startup_screens/LoginScreen.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -145,7 +145,7 @@ class _LandingScreen extends State <LandingScreen> {
             child: RaisedButton(
               elevation: 5,
               onPressed: () {
-                print('LOGIN');
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
               },
               padding: EdgeInsets.all(20),
               shape: RoundedRectangleBorder(

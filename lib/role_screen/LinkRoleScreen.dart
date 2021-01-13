@@ -95,6 +95,8 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
           ),
         ),
 
+
+        // Finish Sign Up Text
         Container(
           child: Align(
             alignment: Alignment(0,-0.3),
@@ -111,6 +113,7 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
             ),
           ),
         ),
+
 
         Container(
           child: Align(
@@ -130,10 +133,12 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
           ),
         ),
 
-
+        // Form
         Form(
           key: roleFormKey,
           child: Stack(children: <Widget>[
+
+            // University
             Align(
               alignment: Alignment(0,-0.05),
               child: Container(
@@ -180,7 +185,7 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
               ),
             ),
 
-
+            // Graduation Date (Month Year)
             Align(
               alignment: Alignment(0,0.1),
               child: Container(
@@ -227,6 +232,7 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
             ),
 
 
+            // Discord Handle
             Align(
               alignment: Alignment(0,0.25),
               child: Container(
@@ -273,6 +279,7 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
             ),
 
 
+            // Finish Sign Up (Submit Button)
             Align(
               alignment: Alignment(0,0.6),
               child: Container(
@@ -308,7 +315,91 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
             ),
 
 
+            // About
+            Align(
+              alignment: Alignment(0.75,1),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 30),
+                width: MediaQuery.of(context).size.width * 0.06,
+                child: FlatButton(
+                  onPressed: () {
+                    print('ABOUT');
+                  },
+                  padding: EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  color: Color(0x00000000),
+                  child: Text(
+                    "ABOUT US",
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ),
 
+
+            // Privacy
+            Align(
+              alignment: Alignment(0.85,1),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 30),
+                width: MediaQuery.of(context).size.width * 0.06,
+                child: FlatButton(
+                  onPressed: () {
+                    print('PRIVACY');
+                  },
+                  padding: EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  color: Color(0x00000000),
+                  child: Text(
+                    "PRIVACY",
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+
+            // Contact Us
+            Align(
+              alignment: Alignment(0.95,1),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 30),
+                width: MediaQuery.of(context).size.width * 0.06,
+                child: FlatButton(
+                  onPressed: () {
+                    print('CONTACT US');
+                  },
+                  padding: EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  color: Color(0x00000000),
+                  child: Text(
+                    "CONTACT US",
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ),
 
 
 

@@ -78,10 +78,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       body: Stack(children: <Widget>[
 
+        // Background color
         Container(
           color: Color(0xFF39556D), // Navy Blue/Dark Blue Color
         ),
 
+
+        // Logo
         Container(
           child: Align(
             alignment: Alignment(0,-0.9),
@@ -92,6 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
 
 
+        // Sign Up text
         Container(
           child: Align(
             alignment: Alignment(0,-0.3),
@@ -157,10 +161,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
 
 
-
+        // Form Fields
         Form(
           key: formKey,
           child: Stack(children: <Widget>[
+
+            // Name
             Align(
               alignment: Alignment(0,-0.2),
               child: Container(
@@ -208,6 +214,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
 
 
+            // Education Email
             Align(
               alignment: Alignment(0,-0.05),
               child: Container(
@@ -250,6 +257,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
 
 
+            // Confirm Education Email
             Align(
               alignment: Alignment(0,0.1),
               child: Container(
@@ -298,6 +306,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
 
 
+            //  Password
             Align(
               alignment: Alignment(0,0.25),
               child: Container(
@@ -338,6 +347,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
 
 
+            // Confirm Password
             Align(
               alignment: Alignment(0,0.4),
               child: Container(
@@ -384,6 +394,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
 
 
+            // Complete Sign Up --> Go to --> Role Screen
             Align(
               alignment: Alignment(0,0.6),
               child: Container(
@@ -423,7 +434,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
         // Go Back
-        // Sign Up Button
         Align(
           alignment: Alignment(0,0.8),
           child: Container(
