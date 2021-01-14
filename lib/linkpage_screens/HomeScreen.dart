@@ -4,6 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:linkcord_app/linkpage_screens/NetworkScreen.dart';
+import 'package:linkcord_app/linkpage_screens/RelaxScreen.dart';
+import 'package:linkcord_app/linkpage_screens/PlayScreen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,10 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
         // Logo
         Container(
           child: Align(
-            alignment: Alignment(-1,0.95),
+            alignment: Alignment(-0.95,0.95),
             child: Image.asset(
               "assets/images/Logo.png",
-              width: MediaQuery.of(context).size.width * 0.1,
+              width: 100,
             ),
           ),
         ),
@@ -72,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Align(
             alignment: Alignment(0,-0.65),
             child: Text(
-              "A HUB WHERE YOU CAN NETWORK, RELAX, AND PLAY WITH FELLOW STUDENTS"
+              "A HUB WHERE YOU CAN NETWORK, RELAX, AND PLAY WITH FELLOW STUDENTS "
                   "AND PROFESSIONALS",
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
@@ -86,6 +90,167 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
 
+
+        // Network
+        Align(
+          alignment: Alignment(-0.75,0),
+          child: Material(
+              elevation: 8,
+              shape: CircleBorder(),
+              clipBehavior: Clip.hardEdge,
+              color: Colors.transparent,
+              child: Ink.image(
+                image: AssetImage('assets/images/networking.png'),
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width * 0.25,
+                height: MediaQuery.of(context).size.height * 0.25,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => NetworkScreen()));
+                  },
+                ),
+              ),
+            ),
+          ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(-0.59,0.35),
+            child: Text(
+              "NETWORK",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+
+
+        // Relax
+        Align(
+          alignment: Alignment(0,0),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/digital-art-420830_1280.png'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.25,
+              height: MediaQuery.of(context).size.height * 0.25,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => RelaxScreen()));
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(0,0.35),
+            child: Text(
+              "RELAX",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+
+        // Play
+        Align(
+          alignment: Alignment(0.75,0),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/game-1926907_1280.png'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.25,
+              height: MediaQuery.of(context).size.height * 0.25,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => PlayScreen()));
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(0.575,0.35),
+            child: Text(
+              "PLAY",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+        // Settings
+        Align(
+          alignment: Alignment(0,0.85),
+          child: Material(
+            elevation: 5,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/macro-1452987_1920.jpg'),
+              fit: BoxFit.cover,
+              width: 75,
+              height: 75,
+              child: InkWell(
+                onTap: () {print("Hi");},
+              ),
+            ),
+          ),
+
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(0,0.92),
+            child: Text(
+              "SETTINGS",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                  )
+              ),
+            ),
+          ),
+        ),
 
 
 

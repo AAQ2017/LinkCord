@@ -22,9 +22,10 @@ class _LinkRoleScreenState extends State<LinkRoleScreen> {
         // Logo
         Container(
           child: Align(
-            alignment: Alignment(0,-0.9),
+            alignment: Alignment(-0.95,0.95),
             child: Image.asset(
               "assets/images/Logo.png",
+              width: 100,
             ),
           ),
         ),
