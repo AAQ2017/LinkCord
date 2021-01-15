@@ -108,7 +108,349 @@ class _NetworkScreenState extends State<NetworkScreen> {
 
 
 
+        Align(
+          alignment: Alignment(-0.61,-0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/engineer-4915457_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
 
+        Container(
+          child: Align(
+            alignment: Alignment(-0.55,-0.025),
+            child: Text(
+              "BIOMEDICAL ENGINEERING",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+
+        Align(
+          alignment: Alignment(-0.225,-0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/trace-3157431_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(-0.2,-0.025),
+            child: Text(
+              "COMPUTER SCIENCE",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+
+
+        Align(
+          alignment: Alignment(0.225,-0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/board-453758_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(0.2,-0.025),
+            child: Text(
+              "ELECTRICAL ENGINEERING",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+        Align(
+          alignment: Alignment(0.61,-0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/child-3264751_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(0.52,-0.025),
+            child: Text(
+              "GAME DESIGN",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+
+
+
+
+        Align(
+          alignment: Alignment(-0.61,0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/engineer-4915457_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(-0.55,0.55),
+            child: Text(
+              "BIOMEDICAL ENGINEERING",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+
+        Align(
+          alignment: Alignment(-0.225,0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/trace-3157431_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(-0.2,0.55),
+            child: Text(
+              "COMPUTER SCIENCE",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+        Align(
+          alignment: Alignment(0.225,0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/board-453758_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(0.2,0.55),
+            child: Text(
+              "ELECTRICAL ENGINEERING",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+        Align(
+          alignment: Alignment(0.61,0.35),
+          child: Material(
+            elevation: 8,
+            shape: CircleBorder(),
+            clipBehavior: Clip.hardEdge,
+            color: Colors.transparent,
+            child: Ink.image(
+              image: AssetImage('assets/images/child-3264751_1920.jpg'),
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: InkWell(
+                onTap: () {
+                  print("hi");
+                },
+              ),
+            ),
+          ),
+        ),
+
+        Container(
+          child: Align(
+            alignment: Alignment(0.52,0.55),
+            child: Text(
+              "GAME DESIGN",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+            ),
+          ),
+        ),
+
+
+
+
+
+
+
+
+
+
+
+        Container(
+          child: Align(
+            alignment: Alignment(0,0.65),
+            child: Text(
+              "MORE FIELDS COMING SOON",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                  )
+              ),
+            ),
+          ),
+        ),
 
 
         // Settings
