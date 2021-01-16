@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linkcord_app/linkpage_screens/HomeScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:linkcord_app/network_screens/UnsureScreen.dart';
 
 
 
@@ -108,6 +109,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
 
 
 
+        // Biomedical
         Align(
           alignment: Alignment(-0.61,-0.35),
           child: Material(
@@ -147,7 +149,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
         ),
 
 
-
+        // CS
         Align(
           alignment: Alignment(-0.225,-0.35),
           child: Material(
@@ -188,7 +190,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
 
 
 
-
+        // EE
         Align(
           alignment: Alignment(0.225,-0.35),
           child: Material(
@@ -227,6 +229,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
           ),
         ),
 
+        // Game Design
         Align(
           alignment: Alignment(0.61,-0.35),
           child: Material(
@@ -269,7 +272,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
 
 
 
-
+        // MATH
         Align(
           alignment: Alignment(-0.61,0.35),
           child: Material(
@@ -278,7 +281,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
             clipBehavior: Clip.hardEdge,
             color: Colors.transparent,
             child: Ink.image(
-              image: AssetImage('assets/images/engineer-4915457_1920.jpg'),
+              image: AssetImage('assets/images/math-1547018_1920.jpg'),
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.2,
@@ -293,9 +296,9 @@ class _NetworkScreenState extends State<NetworkScreen> {
 
         Container(
           child: Align(
-            alignment: Alignment(-0.55,0.55),
+            alignment: Alignment(-0.525,0.55),
             child: Text(
-              "BIOMEDICAL ENGINEERING",
+              "MATHEMATICS",
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
                   textStyle: TextStyle(
@@ -309,7 +312,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
         ),
 
 
-
+        // PRE-DENTAL
         Align(
           alignment: Alignment(-0.225,0.35),
           child: Material(
@@ -318,7 +321,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
             clipBehavior: Clip.hardEdge,
             color: Colors.transparent,
             child: Ink.image(
-              image: AssetImage('assets/images/trace-3157431_1920.jpg'),
+              image: AssetImage('assets/images/chair-2584260_1920.jpg'),
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.2,
@@ -335,7 +338,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
           child: Align(
             alignment: Alignment(-0.2,0.55),
             child: Text(
-              "COMPUTER SCIENCE",
+              "PRE-DENTAL",
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
                   textStyle: TextStyle(
@@ -349,6 +352,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
         ),
 
 
+        // PRE-MED
         Align(
           alignment: Alignment(0.225,0.35),
           child: Material(
@@ -357,7 +361,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
             clipBehavior: Clip.hardEdge,
             color: Colors.transparent,
             child: Ink.image(
-              image: AssetImage('assets/images/board-453758_1920.jpg'),
+              image: AssetImage('assets/images/surgery-1807541_1920.jpg'),
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.2,
@@ -374,7 +378,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
           child: Align(
             alignment: Alignment(0.2,0.55),
             child: Text(
-              "ELECTRICAL ENGINEERING",
+              "PRE-MEDICINE",
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
                   textStyle: TextStyle(
@@ -387,6 +391,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
           ),
         ),
 
+        // UNSURE
         Align(
           alignment: Alignment(0.61,0.35),
           child: Material(
@@ -395,13 +400,13 @@ class _NetworkScreenState extends State<NetworkScreen> {
             clipBehavior: Clip.hardEdge,
             color: Colors.transparent,
             child: Ink.image(
-              image: AssetImage('assets/images/child-3264751_1920.jpg'),
+              image: AssetImage('assets/images/question-mark-1872665_1920.jpg'),
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => UnsureScreen()));
                 },
               ),
             ),
@@ -412,7 +417,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
           child: Align(
             alignment: Alignment(0.52,0.55),
             child: Text(
-              "GAME DESIGN",
+              "UNSURE",
               textAlign: TextAlign.center,
               style: GoogleFonts.roboto(
                   textStyle: TextStyle(
