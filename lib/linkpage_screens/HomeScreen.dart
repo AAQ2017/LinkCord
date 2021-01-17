@@ -7,6 +7,7 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:linkcord_app/linkpage_screens/NetworkScreen.dart';
 import 'package:linkcord_app/linkpage_screens/RelaxScreen.dart';
 import 'package:linkcord_app/linkpage_screens/PlayScreen.dart';
+import 'package:linkcord_app/startup_screens/LandingScreen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -232,8 +233,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-
         ),
+
 
         Container(
           child: Align(
@@ -253,6 +254,33 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
 
+        // Home
+        Align(
+          alignment: Alignment(-0.85,1),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 30),
+            width: MediaQuery.of(context).size.width * 0.06,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LandingScreen()));
+              },
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Color(0x00000000),
+              child: Text(
+                "LOGOUT",
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+        ),
 
 
 

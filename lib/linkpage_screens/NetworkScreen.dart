@@ -5,7 +5,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:linkcord_app/linkpage_screens/HomeScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:linkcord_app/network_screens/BiomedicalScreen.dart';
+import 'package:linkcord_app/network_screens/CompSciScreen.dart';
+import 'package:linkcord_app/network_screens/ElectricalEngineeringScreen.dart';
+import 'package:linkcord_app/network_screens/GameDesignScreen.dart';
+import 'package:linkcord_app/network_screens/MathScreen.dart';
+import 'package:linkcord_app/network_screens/PreDentalScreen.dart';
+import 'package:linkcord_app/network_screens/PreMedScreen.dart';
 import 'package:linkcord_app/network_screens/UnsureScreen.dart';
+import 'package:linkcord_app/linkpage_screens/HomeScreen.dart';
+
 
 
 
@@ -124,7 +133,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => BiomedicalScreen()));
                 },
               ),
             ),
@@ -164,7 +173,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => CompSciScreen()));
                 },
               ),
             ),
@@ -205,7 +214,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ElectricalEngineeringScreen()));
                 },
               ),
             ),
@@ -244,7 +253,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => GameDesignScreen()));
                 },
               ),
             ),
@@ -287,7 +296,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MathScreen()));
                 },
               ),
             ),
@@ -327,7 +336,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => PreDentalScreen()));
                 },
               ),
             ),
@@ -367,7 +376,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: InkWell(
                 onTap: () {
-                  print("hi");
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => PreMedScreen()));
                 },
               ),
             ),
@@ -498,6 +507,33 @@ class _NetworkScreenState extends State<NetworkScreen> {
 
 
 
+        // Home
+        Align(
+          alignment: Alignment(-0.85,1),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 30),
+            width: MediaQuery.of(context).size.width * 0.06,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+              },
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Color(0x00000000),
+              child: Text(
+                "GO HOME",
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+        ),
 
 
         // About
